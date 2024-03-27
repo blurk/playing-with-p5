@@ -1,11 +1,17 @@
 /// <reference path="../node_modules/@types/p5/global.d.ts" />
 
+let coors = []
+
 function setup() {
-  createCanvas(720, 720);
-  background(200)
-  noFill();
+  createCanvas(720, 720)
+  // noCursor()
+  colorMode(HSB, 360, 100, 100);
+  rectMode(CENTER);
+  noStroke();
 }
 
 function draw() {
-  ellipse(mouseX, mouseY, 40, 40);
+  background(mouseY / 2, 100, 100);
+  fill(360 - mouseY / 2, 100, 100);
+  rect(360, 360, mouseX + 1, mouseX + 1);
 }
