@@ -1,17 +1,24 @@
 /// <reference path="../node_modules/@types/p5/global.d.ts" />
 
+const radius = 300 // Must smaller than 800 to make it a cirle
+
 function setup() {
+
   createCanvas(800, 800)
   noStroke()
 
-  colorMode(HSB, 360, width, height)
-  background(360, 0, height)
+
+
+  input = createInput(3, 'number');
+  input.position(0, 800);
+
 }
 
-const radius = 300 // Must smaller than 800 to make it a cirle
-const segmentCounts = 360
-
 function draw() {
+  colorMode(HSB, 360, width, height)
+  background(360, 0, height)
+
+  let segmentCounts = parseInt(input.value())
   let angleStep = 360 / segmentCounts
 
   const halfWidth = width / 2
@@ -27,7 +34,8 @@ function draw() {
     let vy = halfHeight + sin(radians(angle)) * radius;
 
     vertex(vx, vy);
-    fill(angle, mouseX, mouseY);
+    // fill(angle, mouseX, mouseY);
+    fill(angle, width, height);
   }
   endShape()
 }
